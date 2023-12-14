@@ -5,8 +5,7 @@ import java.util.regex.Pattern;
 
 public class Valid {
     private static String EMAIL_PATTERN = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-    private static String FIRSTNAME_PATTERN = "^[a-zA-Z-]{3,}$";
-    private static String LASTNAME_PATTERN = "^[a-zA-Z-]{3,}$";
+    final private static String NAME_PATTERN = "^[a-zA-Z]{2,}+(-[a-zA-Z]{2,}+)?";
 
     public static void main(String[] args) {
 
@@ -17,12 +16,12 @@ public class Valid {
         return  matcher.matches();
     }
     public static boolean isFirstNamelValid(String firstName) {
-        Pattern pattern = Pattern.compile(FIRSTNAME_PATTERN);
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
         Matcher matcher = pattern.matcher(firstName);
         return  matcher.matches();
     }
     public static boolean isLastNamelValid(String lastName) {
-        Pattern pattern = Pattern.compile(LASTNAME_PATTERN);
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
         Matcher matcher = pattern.matcher(lastName);
         return  matcher.matches();
     }

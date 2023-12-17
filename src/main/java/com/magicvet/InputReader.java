@@ -1,4 +1,6 @@
 package main.java.com.magicvet;
+import main.java.com.magicvet.service.Valid;
+import main.java.com.magicvet.service.Validator;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package main.java.com.magicvet;
+package main.java.com.magicvet.service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,3 +26,5 @@ public class Valid {
         return  matcher.matches();
     }
 }
+
+

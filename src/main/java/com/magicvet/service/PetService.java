@@ -4,11 +4,10 @@ import main.java.com.magicvet.model.Dog;
 import main.java.com.magicvet.model.Pet;
 public class PetService {
 
-    private static String DOG_TYPE = "dog";
+    private static final String DOG_TYPE = "dog";
 
     public static Pet registerNewPet() {
         Pet pet;
-
         System.out.print("Type (dog / cat / other): ");
         String type = Main.SCANNER.nextLine();
 

@@ -7,10 +7,7 @@ public class Valid {
     private static String EMAIL_PATTERN = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
     final private static String NAME_PATTERN = "^[a-zA-Z]{2,}+(-[a-zA-Z]{2,}+)?";
 
-    public static void main(String[] args) {
-
-    }
-    public static boolean isEmailValid(String email) {
+       public static boolean isEmailValid(String email) {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);
         return  matcher.matches();

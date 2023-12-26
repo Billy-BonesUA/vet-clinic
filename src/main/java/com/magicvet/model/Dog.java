@@ -38,4 +38,5 @@ public class Dog extends Pet {
     public int hashCode() {
         return Objects.hash(super.hashCode(), size);
     }
+
 }

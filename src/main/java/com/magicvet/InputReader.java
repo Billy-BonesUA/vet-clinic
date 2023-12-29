@@ -17,7 +17,6 @@ public class InputReader {
             System.out.print(prompt);
             String value = SCANNER.nextLine();
             if (validator.isValid(value)) {
-                System.out.println("Value is valid");
                 return value;
             } else {
                 System.out.println(invalidMessage);

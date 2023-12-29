@@ -9,7 +9,7 @@ public class PetService {
     public static Pet registerNewPet() {
         Pet pet;
         System.out.print("Type (dog / cat / other): ");
-        String type = Main.SCANNER.nextLine();
+        String type = Main.SCANNER.nextLine().toLowerCase();
 
         if (DOG_TYPE.equals(type)) {
             pet = buildDog();
@@ -20,8 +20,6 @@ public class PetService {
         return pet;
     }
 
-    /*
-        * */
         private static Dog buildDog() {
             Pet pet = buildPet(DOG_TYPE);
             Dog dog = petToDog(pet);
@@ -52,7 +50,7 @@ public class PetService {
             pet.setName(Main.SCANNER.nextLine());
 
             System.out.print("Sex (male / female): ");
-            pet.setSex(Main.SCANNER.nextLine());
+            pet.setSex(Main.SCANNER.nextLine().toLowerCase());
 
             return pet;
         }

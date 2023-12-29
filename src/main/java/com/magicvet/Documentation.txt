@@ -1,0 +1,112 @@
+Magic Vet
+
+Magic Vet is a simple console-based application designed for registering clients and their pets in a veterinary clinic. It provides functionality for adding new clients, registering pets for clients, and managing basic information about pets.
+
+Components:
+
+Main: The entry point of the application, initializing the ApplicationRunner to start the program.
+
+ApplicationRunner: Manages the overall flow of the application, including client authentication, client registration, and pet registration.
+
+Authenticator: Handles user authentication by checking a predefined password. Access is granted after three password attempts.
+
+ClientService: Manages the registration of new clients, ensuring valid input for email, first name, and last name. It also registers pets for clients.
+
+PetService: Handles the registration of new pets, distinguishing between dog, cat, and other types. It prompts the user for pet details such as age, name, and sex.
+
+PetRepository: Stores registered pets for future reference.
+
+ClientRepository: Stores registered clients for future reference.
+
+InputReader: Provides utility methods for reading user input, ensuring validation based on specified criteria.
+
+Validator: Interface defining the contract for input validation.
+
+Valid: Implements validation methods, such as email validation and name validation.
+
+Client: Represents a client with properties like first name, last name, email, and associated pet.
+
+Pet: Represents a generic pet with properties like type, sex, age, name, and owner name.
+
+Dog: Extends the Pet class to include additional properties specific to dogs, such as size.
+
+Usage:
+
+Run the program and enter the predefined password for authentication.
+
+Register a new client by providing valid email, first name, and last name.
+
+Add a new pet for the registered client, specifying pet details such as type, age, name, and sex.
+
+View the details of the registered client and their associated pet.
+
+Note: The program is designed for educational purposes and demonstrates basic console-based input, validation, and registration functionalities.
+
+1. PetService.registerNewPet()
+Purpose: Registers a new pet by prompting the user to input details such as type, age, name, and sex.
+Input: None.
+Output: Returns a Pet object representing the registered pet.
+2. PetService.buildDog()
+Purpose: Builds a Dog object, which is a specific type of pet with additional properties like size.
+Input: None.
+Output: Returns a Dog object.
+3. PetService.petToDog(Pet pet)
+Purpose: Converts a generic Pet object to a Dog object.
+Input: A Pet object.
+Output: Returns a Dog object.
+4. PetService.buildPet(String type)
+Purpose: Builds a generic Pet object based on the specified type.
+Input: Pet type (String).
+Output: Returns a Pet object.
+5. ClientService.registerNewClient()
+Purpose: Registers a new client by prompting the user to input details such as email, first name, and last name.
+Input: None.
+Output: Returns a Client object representing the registered client.
+6. ClientService.registerPetForClient(Client client)
+Purpose: Registers a pet for a given client, prompting the user to input pet details.
+Input: A Client object.
+Output: None.
+7. ClientRepository.findClientByEmail(String email)
+Purpose: Finds a client in the repository based on the provided email.
+Input: Client email (String).
+Output: Returns a Client object if found; otherwise, returns null.
+8. PetRepository.addPet(Pet pet)
+Purpose: Adds a pet to the repository.
+Input: A Pet object.
+Output: None.
+9. InputReader.readEmail()
+Purpose: Reads and validates user input for an email address.
+Input: None.
+Output: Returns a valid email address (String).
+10. InputReader.read(String prompt, String invalidMessage, Validator validator)
+Purpose: Reads and validates user input based on the provided Validator implementation.
+Input: Prompt message, invalid message, and a Validator instance.
+Output: Returns a valid input (String).
+11. Validator.isValid(String value) (Interface)
+Purpose: Defines the contract for input validation.
+Input: A value (String).
+Output: Returns true if the value is valid; otherwise, returns false.
+12. Valid.isEmailValid(String email)
+Purpose: Validates if an email address is in a correct format.
+Input: Email address (String).
+Output: Returns true if the email is valid; otherwise, returns false.
+13. Valid.isFirstNamelValid(String firstName)
+Purpose: Validates if a first name is in a correct format.
+Input: First name (String).
+Output: Returns true if the first name is valid; otherwise, returns false.
+14. Valid.isLastNamelValid(String lastName)
+Purpose: Validates if a last name is in a correct format.
+Input: Last name (String).
+Output: Returns true if the last name is valid; otherwise, returns false.
+15. Authenticator.auth()
+Purpose: Performs user authentication by checking the entered password.
+Input: None.
+Output: Returns true if authentication is successful; otherwise, returns false.
+16. ApplicationRunner.run()
+Purpose: Orchestrates the overall flow of the application, including client authentication, registration, and pet registration.
+Input: None.
+Output: None.
+17. Main.main(String[] args)
+Purpose: The entry point of the application.
+Input: Command-line arguments (not used).
+Output: None.

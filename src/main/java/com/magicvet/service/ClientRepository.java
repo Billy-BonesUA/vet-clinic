@@ -1,5 +1,7 @@
 package main.java.com.magicvet.service;
 import main.java.com.magicvet.model.Client;
+
+
 import java.util.ArrayList;
 public class ClientRepository {
     private static ArrayList<Client> clients = new ArrayList<>();

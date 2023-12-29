@@ -9,6 +9,11 @@ public class Pet {
     private String age;
     private String name;
     private String ownerName;
+    public Pet(String type) {
+        this.type = type;
+    }
+    public Pet() {
+    }
 
     public String getType() {
         return type;
@@ -42,9 +47,6 @@ public class Pet {
         this.name = name;
     }
 
-    public String getOwnerName() {
-        return ownerName;
-    }
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
@@ -55,7 +57,6 @@ public class Pet {
                 type, sex, age, name, ownerName);
     }
 
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -76,4 +77,5 @@ public class Pet {
         return Objects.hash(type, sex, age, name, ownerName);
     }
 }
+
 

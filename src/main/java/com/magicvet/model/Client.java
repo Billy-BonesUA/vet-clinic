@@ -1,4 +1,6 @@
 package main.java.com.magicvet.model;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 public class Client {
 
@@ -6,6 +8,7 @@ public class Client {
     private String lastName;
     private String email;
     private Pet pet;
+    private List<Pet> pets = new ArrayList<>();
     @Override
     public String toString() {
         return "Client {"
@@ -61,5 +64,8 @@ public class Client {
 
     public void setPet(Pet pet) {
         this.pet = pet;
+        if (pet != null) {
+            pet.setOwnerName(firstName + " " + lastName);
+        }
     }
 }

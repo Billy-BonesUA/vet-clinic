@@ -4,19 +4,21 @@ import java.util.Objects;
 
 public class Dog extends Pet {
 
+    public Dog() {
+        super("dog"); // Встановлюємо тип тварини для поля type
+    }
+
     private String size;
 
     public void setSize(String size) {
         this.size = size;
     }
 
-    public String getSize() {
-        return size;
-    }
+
     @Override
     public String toString() {
-        return String.format("Dog {type: %s, sex: %s, age: %s, name: %s, ownerName: %s, size: %s}",
-                getType(), getSex(), getAge(), getName(), getOwnerName(), size);
+        return String.format("Dog {type: %s, sex: %s, age: %s, name: %s, size: %s}",
+                getType(), getSex(), getAge(), getName(),  size);
     }
 
     @Override

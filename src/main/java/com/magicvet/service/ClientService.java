@@ -35,26 +35,53 @@ public class ClientService {
                     + client.getLastName() + " ("
                     + client.getEmail() + ")");
 
-            registerPetForClient(client);
+
         }
         return client;
     }
 
     public static void registerPetForClient(Client client) {
-        System.out.println("Adding a new pet.");
 
-        Pet pet = PetService.registerNewPet(); // Викликаємо метод реєстрації нового улюбленця
+        String email = client.getEmail();
+        Client existingClient = findClientByEmail(email);
 
-        if (pet != null) {
-            client.setPet(pet);
-            pet.setOwnerName(client.getFirstName() + " " + client.getLastName());
+        if (existingClient != null) {
+            System.out.println("Client with this email already exists.");
+            System.out.println("Existing client: "
+                    + existingClient.getFirstName() + ' '
+                    + existingClient.getLastName() + " ("
+                    + existingClient.getEmail() + ")");
 
-            System.out.println("Pet has been added.");
+            if (existingClient.getPet() != null) {
+                // Якщо у існуючого клієнта вже є тварина, виведемо інформацію про неї
+                System.out.println("Existing pet: " + existingClient.getPet());
+            } else {
+                // Якщо у існуючого клієнта ще немає тварини, запропонуємо зареєструвати нову
+                System.out.println("Adding a new pet.");
+                Pet pet = PetService.registerNewPet();
 
-            // Додаємо улюбленця в репозиторій
-            PetRepository.addPet(pet);
+                if (pet != null) {
+                    existingClient.setPet(pet);
+                    pet.setOwnerName(existingClient.getFirstName() + " " + existingClient.getLastName());
+                    System.out.println("Pet has been added.");
+                } else {
+                    System.out.println("Pet registration canceled.");
+                }
+            }
         } else {
-            System.out.println("Pet registration canceled.");
+           PetRepository.addPet(client.getPet());
+
+            System.out.println("Adding a new pet.");
+            Pet pet = PetService.registerNewPet();
+
+            if (pet != null) {
+                client.setPet(pet);
+                pet.setOwnerName(client.getFirstName() + " " + client.getLastName());
+
+                System.out.println("Pet has been added.");
+            } else {
+                System.out.println("Pet registration canceled.");
+            }
         }
     }
 }

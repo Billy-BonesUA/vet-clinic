@@ -53,32 +53,28 @@ public class ClientService {
                     + existingClient.getEmail() + ")");
 
             if (existingClient.getPet() != null) {
-                // Якщо у існуючого клієнта вже є тварина, виведемо інформацію про неї
+
                 System.out.println("Existing pet: " + existingClient.getPet());
             } else {
-                // Якщо у існуючого клієнта ще немає тварини, запропонуємо зареєструвати нову
                 System.out.println("Adding a new pet.");
                 Pet pet = PetService.registerNewPet();
 
                 if (pet != null) {
                     existingClient.setPet(pet);
                     pet.setOwnerName(existingClient.getFirstName() + " " + existingClient.getLastName());
+                    PetRepository.addPet(pet);
                     System.out.println("Pet has been added.");
                 } else {
                     System.out.println("Pet registration canceled.");
                 }
             }
         } else {
-           PetRepository.addPet(client.getPet());
-
-            System.out.println("Adding a new pet.");
-            Pet pet = PetService.registerNewPet();
-
+           Pet pet = PetService.registerNewPet();
             if (pet != null) {
                 client.setPet(pet);
                 pet.setOwnerName(client.getFirstName() + " " + client.getLastName());
+                PetRepository.addPet(pet);
 
-                System.out.println("Pet has been added.");
             } else {
                 System.out.println("Pet registration canceled.");
             }

@@ -1,24 +1,37 @@
 package main.java.com.magicvet.model;
 
+
 import java.util.Objects;
 
 public class Dog extends Pet {
-
+    public static final String XS = "XS";
+    public static final String S = "S";
+    public static final String M = "M";
+    public static final String L = "L";
+    public static final String XL = "XL";
     public Dog() {
-        super("dog"); // Встановлюємо тип тварини для поля type
+        super("dog");
     }
 
     private String size;
 
+
+    public Dog(String size) {
+        this.size = size;
+    }
+
     public void setSize(String size) {
         this.size = size;
+    }
+    public String getSize() {
+        return size;
     }
 
 
     @Override
     public String toString() {
-        return String.format("Dog {type: %s, sex: %s, age: %s, name: %s, size: %s}",
-                getType(), getSex(), getAge(), getName(),  size);
+        return String.format("Dog {type: %s, sex: %s, age: %s, name: %s, size: %s, ownerName: %s}",
+                getType(), getSex(), getAge(), getName(),  size, getOwnerName());
     }
 
     @Override

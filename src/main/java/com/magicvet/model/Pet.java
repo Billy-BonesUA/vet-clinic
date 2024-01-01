@@ -2,7 +2,7 @@ package main.java.com.magicvet.model;
 
 import java.util.Objects;
 
-public class Pet {
+public abstract class Pet {
 
     private String type;
     private String sex;
@@ -47,9 +47,11 @@ public class Pet {
         this.name = name;
     }
 
-
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
+    }
+    public String getOwnerName(){
+        return ownerName;
     }
     @Override
     public String toString() {

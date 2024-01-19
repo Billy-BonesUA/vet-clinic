@@ -38,7 +38,10 @@ public class Dog extends Pet {
             return value;
         }
     }
-
+    public Dog(Size size, HealthState healthState) {
+        setHealthState(healthState);
+        this.size = size;
+    }
     @Override
     public String toString() {
         return String.format("Dog {type: %s, sex: %s, age: %s, name: %s, size: %s, ownerName: %s}",

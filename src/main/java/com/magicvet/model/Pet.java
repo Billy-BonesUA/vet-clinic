@@ -1,14 +1,17 @@
 package main.java.com.magicvet.model;
 
 import java.util.Objects;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 public abstract class Pet {
-
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
     private String type;
     private String sex;
     private String age;
     private String name;
     private String ownerName;
+    private HealthState healthState;
+    private final LocalDateTime registrationDate = LocalDateTime.now();
     public Pet(String type) {
         this.type = type;
     }
@@ -53,10 +56,17 @@ public abstract class Pet {
     public String getOwnerName(){
         return ownerName;
     }
+    public void setHealthState(HealthState healthState){
+        this.healthState = healthState;
+    }
+
+    public HealthState getHealthState(){
+        return healthState;
+    }
     @Override
     public String toString() {
-        return String.format("Pet {type: %s, sex: %s, age: %s, name: %s, ownerName: %s}",
-                type, sex, age, name, ownerName);
+        return String.format("Pet {type: %s, sex: %s, age: %s, name: %s, ownerName: %s,registrationDatePet: %s}",
+                type, sex, age, name, ownerName, registrationDate.format(FORMATTER));
     }
 
     public boolean equals(Object obj) {
@@ -77,6 +87,22 @@ public abstract class Pet {
     @Override
     public int hashCode() {
         return Objects.hash(type, sex, age, name, ownerName);
+    }
+    public enum HealthState{
+        Good_Health(1),
+        Moderate_Severity(2),
+        Severe_Degree(3),
+        UNKNOWN(0);
+
+        private int value;
+
+        HealthState(int value){
+            this.value = value;
+        }
+
+        public int getHealState(){
+            return value;
+        }
     }
 }
 

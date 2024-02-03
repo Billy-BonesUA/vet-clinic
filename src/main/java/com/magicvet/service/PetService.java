@@ -37,9 +37,14 @@ public class PetService {
 
             System.out.print("Sex (male / female): ");
             pet.setSex(Main.SCANNER.nextLine().toLowerCase());
+
+            System.out.println("Health state: (Good_Health / Moderate_Severity / Severe_Degree:)");
+            String healthState = Main.SCANNER.nextLine();
+            pet.setHealthState(Pet.HealthState.valueOf(healthState));
             if (type.equals(DOG_TYPE)) {
-                System.out.print("Size (xS / S / M / L / xL / xxL): ");
-                ((Dog) pet).setSize(Main.SCANNER.nextLine());
+                System.out.print("Size (XS / S / M / L / XL): ");
+                String size = Main.SCANNER.nextLine();
+                ((Dog) pet).setSize(Dog.Size.valueOf(size));
             }
             return pet;
         }

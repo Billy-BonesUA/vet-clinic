@@ -4,30 +4,44 @@ package main.java.com.magicvet.model;
 import java.util.Objects;
 
 public class Dog extends Pet {
-    public static final String XS = "XS";
-    public static final String S = "S";
-    public static final String M = "M";
-    public static final String L = "L";
-    public static final String XL = "XL";
+    private Size size;
+
     public Dog() {
-        super("dog");
+        this.size = Size.UNKNOWN;
     }
-
-    private String size;
-
-
-    public Dog(String size) {
+    public Dog(Size size) {
         this.size = size;
     }
 
-    public void setSize(String size) {
+    public void setSize(Size size) {
         this.size = size;
     }
-    public String getSize() {
+    public Size getSize() {
         return size;
     }
+    public enum Size {
 
+        XS(1),
+        S(2),
+        M(3),
+        L(4),
+        XL(5),
+        UNKNOWN(0);
 
+        private final int value;
+
+        Size(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
+    public Dog(Size size, HealthState healthState) {
+        setHealthState(healthState);
+        this.size = size;
+    }
     @Override
     public String toString() {
         return String.format("Dog {type: %s, sex: %s, age: %s, name: %s, size: %s, ownerName: %s}",

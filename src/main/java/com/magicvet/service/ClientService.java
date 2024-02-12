@@ -1,5 +1,6 @@
 package main.java.com.magicvet.service;
 import main.java.com.magicvet.InputReader;
+import main.java.com.magicvet.Main;
 import main.java.com.magicvet.model.Client;
 import main.java.com.magicvet.model.Pet;
 
@@ -35,6 +36,9 @@ public class ClientService {
                     + client.getLastName() + " ("
                     + client.getEmail() + ")");
 
+            System.out.print("Location: ");
+            String location = Main.SCANNER.nextLine();
+            client.setLocation(Client.Location.valueOf(location));
 
         }
         return client;

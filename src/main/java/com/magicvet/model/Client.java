@@ -13,13 +13,14 @@ public class Client {
     private Pet pet;
     private List<Pet> pets = new ArrayList<>();
     private final LocalDateTime registrationDateClient = LocalDateTime.now();
-
+    private Location location;
     @Override
     public String toString() {
         return "Client {"
                 + "\n\tfirstName = " + firstName
                 + ", lastName = " + lastName
                 + ", email = " + email
+                + ", location = " + location
                 + ",\n\tpet = " + pet
                 +  ", registrationDateClient = " + registrationDateClient.format(FORMATTER_CLIENT)
                 + "\n}";
@@ -66,6 +67,18 @@ public class Client {
 
     public Pet getPet() {
         return pet;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public enum Location {
+        KYIV, LVIV, ODESA
     }
 
     public void setPet(Pet pet) {

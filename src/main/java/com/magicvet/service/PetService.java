@@ -1,5 +1,6 @@
 package main.java.com.magicvet.service;
 import main.java.com.magicvet.Main;
+import main.java.com.magicvet.model.Client;
 import main.java.com.magicvet.model.Dog;
 import main.java.com.magicvet.model.Pet;
 import main.java.com.magicvet.model.Cat;
@@ -40,13 +41,28 @@ public class PetService {
 
             System.out.println("Health state: (Good_Health / Moderate_Severity / Severe_Degree:)");
             String healthState = Main.SCANNER.nextLine();
+            try {
+                pet.setHealthState(Pet.HealthState.valueOf(healthState));
+            } catch (IllegalArgumentException e) {
+                pet.setHealthState(Pet.HealthState.UNKNOWN);
+                System.out.println("Unable to parse value '" + healthState
+                        + "'. Using default value: " + Pet.HealthState.UNKNOWN);
+            }
             pet.setHealthState(Pet.HealthState.valueOf(healthState));
             if (type.equals(DOG_TYPE)) {
                 System.out.print("Size (XS / S / M / L / XL): ");
-                String size = Main.SCANNER.nextLine();
-                ((Dog) pet).setSize(Dog.Size.valueOf(size));
+                String sizeInput = Main.SCANNER.nextLine();
+
+                try {
+                    Dog.Size size = Dog.Size.valueOf(sizeInput.toUpperCase()); // Перетворення введеного розміру в enum
+                    ((Dog) pet).setSize(size); // Встановлення розміру для собаки
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Unable to parse size '" + sizeInput + "'. Using default value: " + Dog.Size.UNKNOWN);
+                    ((Dog) pet).setSize(Dog.Size.UNKNOWN); // Встановлення розміру за замовчуванням у разі невідповідності
+                }
             }
             return pet;
+
         }
 
     }

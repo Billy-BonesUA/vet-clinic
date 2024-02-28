@@ -5,6 +5,18 @@ import java.util.Objects;
 
 public class Dog extends Pet {
     private Size size;
+    @Override
+    public String toString() {
+        return "Pet {"
+                + "type = " + getType()
+                + ", sex = " + getSex()
+                + ", age = " + getAge()
+                + ", name = " + getName()
+                + ", size = " + getSize()
+                + ", ownerName = " + getOwnerName()
+                + ", registrationDate = " + getRegistrationDate().format(FORMATTER)
+                + "}";
+    }
 
     public Dog() {
         this.size = Size.UNKNOWN;
@@ -33,7 +45,17 @@ public class Dog extends Pet {
         Size(int value) {
             this.value = value;
         }
+       /* public static Size fromString(String value) {
+            for (Size size : values()) {
+                if (size.toString().equals(value)) {
+                    return size;
+                }
+            }
 
+            System.out.println("Unable to parse value '" + value + "'. Using default value: " + UNKNOWN);
+
+            return UNKNOWN;
+        }*/
         public int getValue() {
             return value;
         }
@@ -42,11 +64,7 @@ public class Dog extends Pet {
         setHealthState(healthState);
         this.size = size;
     }
-    @Override
-    public String toString() {
-        return String.format("Dog {type: %s, sex: %s, age: %s, name: %s, size: %s, ownerName: %s}",
-                getType(), getSex(), getAge(), getName(),  size, getOwnerName());
-    }
+
 
     @Override
     public boolean equals(Object obj) {

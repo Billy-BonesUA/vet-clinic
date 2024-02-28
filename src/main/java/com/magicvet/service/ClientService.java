@@ -3,13 +3,13 @@ import main.java.com.magicvet.InputReader;
 import main.java.com.magicvet.Main;
 import main.java.com.magicvet.model.Client;
 import main.java.com.magicvet.model.Pet;
-
+import java.util.Optional;
 import static main.java.com.magicvet.service.ClientRepository.findClientByEmail;
 
 
 public class ClientService {
 
-    public static Client registerNewClient() {
+    public Optional<Client> registerNewClient() {
         Client client = new Client();
         System.out.println("Please provide client details.");
         String email = InputReader.readEmail();
@@ -51,7 +51,7 @@ public class ClientService {
             client.setLocation(location);
 
         }
-        return client;
+        return Optional.ofNullable(client);
     }
 
     public static void registerPetForClient(Client client) {
